@@ -32,6 +32,7 @@ public class CourseCreateRequest {
         }
         return course;
     }
+
     public static void validCreateCourseRequest(CourseCreateRequest request ) throws Exception {
         if (HelperUtils.isNull(request.getName()) || request.getName().isBlank() || request.getName().isEmpty()) {
             throw new Exception(Constants.COURSE_CREATE_REQUEST_NAME_NOT_VALID);

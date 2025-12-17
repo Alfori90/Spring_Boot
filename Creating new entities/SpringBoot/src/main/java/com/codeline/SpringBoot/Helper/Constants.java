@@ -17,6 +17,9 @@ public class Constants {
     public static final String INSTRUCTOR_CREATE_REQUEST_SPECIALIZATION_NOT_VALID = "Instructor specialization is not valid";
     public static final String INSTRUCTOR_CREATE_REQUEST_DEPARTMENT_ID_NOT_VALID = "Department ID is not valid";
     public static final String INSTRUCTOR_CREATE_REQUEST_COURSE_ID_NOT_VALID = "Course ID is not valid";
+    public static final String INSTRUCTOR_DEPARTMENT_ID_NOT_FOUND = "Instructor department ID is not valid";
+    public static final String INSTRUCTOR_COURSE_ID_NOT_FOUND = "Instructor course ID is not valid";
+
 
     public static final String DEPARTMENT_CREATE_REQUEST_NAME_NOT_VALID = "Department name is not valid";
     public static final String DEPARTMENT_CREATE_REQUEST_DESCRIPTION_NOT_VALID = "Department description is not valid";

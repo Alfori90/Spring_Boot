@@ -21,19 +21,21 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Course {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     private String name;
     private int creditHours;
-    private Date createdDate;
-    private Date UpdatedDate;
-    private Boolean isActive;
 
     @OneToOne(mappedBy = "course", cascade = CascadeType.ALL)
     private Instructor instructor;
 
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
     private List<Mark> marks = new ArrayList<>();
+
+    private Date createdDate;
+    private Date updatedDate;
+    private Boolean isActive;
 }

@@ -16,8 +16,6 @@ public class DepartmentCreateRequest {
 
   private String name;
   private String description;
-  private Integer courseId;
-  private Integer instructorId;
 
 
     public static Department convertToDepartment(DepartmentCreateRequest request) {
@@ -33,10 +31,6 @@ public class DepartmentCreateRequest {
             throw new Exception(Constants.DEPARTMENT_CREATE_REQUEST_NAME_NOT_VALID);
         } else if (HelperUtils.isNull(request.getDescription()) || request.getDescription().isBlank() || request.getDescription().isEmpty()) {
             throw new Exception(Constants.DEPARTMENT_CREATE_REQUEST_DESCRIPTION_NOT_VALID);
-        } else if (HelperUtils.isNull(request.getCourseId()) || request.getCourseId() <= 0) {
-            throw new Exception(Constants.DEPARTMENT_CREATE_REQUEST_COURSE_ID_NOT_VALID);
-        } else if (HelperUtils.isNull(request.getInstructorId())|| request.getInstructorId()<=0) {
-            throw new Exception(Constants.DEPARTMENT_CREATE_REQUEST_INSTRUCTOR_NOT_VALID);
         }
     }
 }

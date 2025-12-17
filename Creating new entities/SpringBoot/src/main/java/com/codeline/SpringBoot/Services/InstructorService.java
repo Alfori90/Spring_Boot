@@ -6,6 +6,7 @@ import com.codeline.SpringBoot.RequestObject.InstructorCreateRequest;
 import com.codeline.SpringBoot.Entities.Course;
 import com.codeline.SpringBoot.Entities.Department;
 import com.codeline.SpringBoot.Entities.Instructor;
+import com.codeline.SpringBoot.ResponseObject.InstructorCreateResponse;
 import com.codeline.SpringBoot.repositories.CourseRepository;
 import com.codeline.SpringBoot.repositories.DepartmentRepository;
 import com.codeline.SpringBoot.repositories.InstructorRepository;
@@ -32,12 +33,31 @@ public class InstructorService {
     }
 
 
-    public Instructor saveInstructor(InstructorCreateRequest request) throws Exception {
-        Instructor instructor = InstructorCreateRequest.convertToInstructor(request);
+    public InstructorCreateResponse saveInstructor(InstructorCreateRequest instructorDTO) throws Exception{
+        Instructor instructor = InstructorCreateRequest.convertToInstructor(instructorDTO);
+        instructor.setName(instructorDTO.getName());
+        instructor.setEmail(instructorDTO.getEmail());
+
+        Department department = departmentRepository.getDepartmentById(instructorDTO.getDepartmentId());
+        if(HelperUtils.isNotNull(department)){
+            instructor.setDepartment(department);
+        }
+        else {
+            throw new Exception(Constants.INSTRUCTOR_DEPARTMENT_ID_NOT_FOUND);
+        }
+
+//        Course course = courseRepository.getCourseById(instructorDTO.getCourseId());
+//        if(HelperUtils.isNotNull(course)){
+//            instructor.setCourse(course);
+//        }
+//        else {
+//            throw new Exception(Constants.INSTRUCTOR_COURSE_ID_NOT_FOUND);
+//        }
+
         instructor.setCreatedDate(new Date());
         instructor.setIsActive(Boolean.TRUE);
 
-        return instructorRepository.save(instructor);
+        return InstructorCreateResponse.convertToInstructorResponse(instructorRepository.save(instructor));
     }
 
     public Instructor updateInstructor(Instructor inst) throws Exception {

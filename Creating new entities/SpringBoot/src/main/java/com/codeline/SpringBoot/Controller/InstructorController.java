@@ -2,6 +2,7 @@ package com.codeline.SpringBoot.Controller;
 
 import com.codeline.SpringBoot.RequestObject.InstructorCreateRequest;
 import com.codeline.SpringBoot.Entities.Instructor;
+import com.codeline.SpringBoot.ResponseObject.InstructorCreateResponse;
 import com.codeline.SpringBoot.Services.InstructorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,9 +17,9 @@ public class InstructorController {
     InstructorService instructorService;
 
     @PostMapping("/create")
-    public Instructor createInstructor(@RequestBody InstructorCreateRequest requestObj) throws Exception {
+    public InstructorCreateResponse createInstructor(@RequestBody InstructorCreateRequest requestObj) throws Exception {
         InstructorCreateRequest.validCreateInstructorRequest(requestObj);
-        Instructor instructor = instructorService.saveInstructor(requestObj);
+        InstructorCreateResponse instructor = instructorService.saveInstructor(requestObj);
         return instructor;
     }
 

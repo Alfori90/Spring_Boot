@@ -3,6 +3,7 @@ package com.codeline.SpringBoot.Controller;
 
 import com.codeline.SpringBoot.RequestObject.CourseCreateRequest;
 import com.codeline.SpringBoot.Entities.Course;
+import com.codeline.SpringBoot.ResponseObject.CourseCreateResponse;
 import com.codeline.SpringBoot.Services.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,9 +20,9 @@ public class CourseController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("create")
-    public Course createCourse(@RequestBody CourseCreateRequest requestObj) throws Exception{
+    public CourseCreateResponse createCourse(@RequestBody CourseCreateRequest requestObj) throws Exception{
         CourseCreateRequest.validCreateCourseRequest(requestObj);
-        Course course = courseService.saveCourse(requestObj);
+        CourseCreateResponse course = courseService.saveCourse(requestObj);
         return course;
     }
 

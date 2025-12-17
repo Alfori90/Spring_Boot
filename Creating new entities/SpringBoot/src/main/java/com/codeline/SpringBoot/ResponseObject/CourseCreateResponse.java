@@ -19,7 +19,6 @@ public class CourseCreateResponse {
     private int id;
     private String name;
     private int creditHours;
-    private String instructorName;
     private Integer instructorId;
     private List<MarkCreateResponse> marks;
 
@@ -28,7 +27,6 @@ public class CourseCreateResponse {
                 .id(entity.getId())
                 .name(entity.getName())
                 .creditHours(entity.getCreditHours())
-                .instructorName(entity.getInstructor().getName())
                 .instructorId(entity.getInstructor().getId())
                 .marks(entity.getMarks()==null ? null :
                         entity.getMarks()
